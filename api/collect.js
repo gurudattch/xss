@@ -24,12 +24,13 @@ function safe(val) {
 }
 
 function sendData(payload) {
+  var root = document.body || document.documentElement;
   var iframe = document.createElement('iframe');
   iframe.style.display = 'none';
   iframe.style.width = '0';
   iframe.style.height = '0';
   iframe.style.border = 'none';
-  document.body.appendChild(iframe);
+  root.appendChild(iframe);
   
   var form = document.createElement('form');
   form.method = 'POST';
